@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat QA with Elasticsearch + Local LLM</title>
+    <style>
+        body { font-family: Arial; max-width: 700px; margin: auto; padding: 20px; }
+        .chat { margin-bottom: 20px; }
+        .user { background: #daf0ff; padding: 10px; border-radius: 10px; margin-bottom: 5px; }
+        .bot { background: #f0f0f0; padding: 10px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Ask a Question</h2>
+    <form method="POST">
+        <input type="text" name="question" required style="width: 100%;" placeholder="Type your question..." value="{{ question or '' }}">
+        <button type="submit">Ask</button>
+    </form>
+
+    {% if question and response %}
+    <div class="chat">
+        <div class="user"><strong>You:</strong> {{ question }}</div>
+        <div class="bot"><strong>Assistant:</strong><br>{{ response | safe }}</div>
+    </div>
+    {% endif %}
+</body>
+</html>

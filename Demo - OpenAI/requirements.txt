@@ -1,0 +1,4 @@
+flask
+elasticsearch==8.18.1
+openai
+python-dotenv

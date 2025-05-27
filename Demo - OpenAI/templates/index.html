@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat with AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .message {
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+    .user-message {
+      background-color: #d1e7dd;
+      margin-left: auto;
+      text-align: right;
+    }
+    .bot-message {
+      background-color: #f0f0f0;
+      margin-right: auto;
+      text-align: left;
+    }
+    form {
+      display: flex;
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px 20px;
+      margin-left: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Ask AI (Elasticsearch + OpenAI)</h2>
+    <div class="chat-box">
+      {% if question %}
+        <div class="message user-message">
+          <strong>You:</strong><br>{{ question }}
+        </div>
+      {% endif %}
+      {% if response %}
+        <div class="message bot-message">
+          <strong>Assistant:</strong><br>{{ response | safe }}
+        </div>
+      {% endif %}
+    </div>
+    <form method="POST">
+      <input type="text" name="question" placeholder="Type your question here..." required>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</body>
+</html>
